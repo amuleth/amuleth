@@ -1,0 +1,5 @@
+# Ignore bazel directories
+bazel-*
+
+# MacOS DS STORE
+.DS_Store
