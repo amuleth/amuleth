@@ -1,0 +1,5 @@
+version: "Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)"
+options: "4aa150b8550a94e4445926f58eecf6fb"
+build_time: [1612234204, 455850000]
+inputs:
+  "/Users/kevinchau/amuleth/Sources/amuleth/main.swift": [1612234165, 652440390]

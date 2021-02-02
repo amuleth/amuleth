@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amuleth.build/master.swiftdeps"
+  },
+  "/Users/kevinchau/amuleth/Sources/amuleth/main.swift": {
+    "dependencies": "/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amuleth.build/main.d",
+    "object": "/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amuleth.build/main.swift.o",
+    "swiftmodule": "/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amuleth.build/main~partial.swiftmodule",
+    "swift-dependencies": "/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amuleth.build/main.swiftdeps"
+  }
+}

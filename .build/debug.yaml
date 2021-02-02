@@ -1,0 +1,91 @@
+client:
+  name: basic
+tools: {}
+targets:
+  "PackageStructure": ["<PackageStructure>"]
+  "amuleth-debug.exe": ["<amuleth-debug.exe>"]
+  "amuleth-debug.module": ["<amuleth-debug.module>"]
+  "amulethPackageTests-debug.test": ["<amulethPackageTests-debug.test>"]
+  "amulethTests-debug.module": ["<amulethTests-debug.module>"]
+  "main": ["<amuleth-debug.exe>","<amuleth-debug.module>"]
+  "test": ["<amuleth-debug.exe>","<amuleth-debug.module>","<amulethPackageTests-debug.test>","<amulethTests-debug.module>"]
+default: "main"
+nodes:
+  "/Users/kevinchau/amuleth/Sources/amuleth/":
+    is-directory-structure: true
+  "/Users/kevinchau/amuleth/Tests/amulethTests/":
+    is-directory-structure: true
+commands:
+  "<amuleth-debug.exe>":
+    tool: phony
+    inputs: ["/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amuleth"]
+    outputs: ["<amuleth-debug.exe>"]
+
+  "<amuleth-debug.module>":
+    tool: phony
+    inputs: ["/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amuleth.build/main.swift.o","/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amuleth.swiftmodule"]
+    outputs: ["<amuleth-debug.module>"]
+
+  "<amulethPackageTests-debug.test>":
+    tool: phony
+    inputs: ["/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amulethPackageTests.xctest/Contents/MacOS/amulethPackageTests"]
+    outputs: ["<amulethPackageTests-debug.test>"]
+
+  "<amulethTests-debug.module>":
+    tool: phony
+    inputs: ["/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amulethTests.build/XCTestManifests.swift.o","/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amulethTests.build/amulethTests.swift.o","/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amulethTests.swiftmodule"]
+    outputs: ["<amulethTests-debug.module>"]
+
+  "C.amuleth-debug.exe":
+    tool: shell
+    inputs: ["/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amuleth.build/main.swift.o"]
+    outputs: ["/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amuleth"]
+    description: "Linking ./.build/x86_64-apple-macosx/debug/amuleth"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug","-o","/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amuleth","-module-name","amuleth","-emit-executable","-Xlinker","-rpath","-Xlinker","@loader_path","@/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amuleth.product/Objects.LinkFileList","-Xlinker","-rpath","-Xlinker","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx","-target","x86_64-apple-macosx10.10","-Xlinker","-add_ast_path","-Xlinker","/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amuleth.swiftmodule","-L","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib"]
+
+  "C.amuleth-debug.module":
+    tool: swift-compiler
+    inputs: ["/Users/kevinchau/amuleth/Sources/amuleth/main.swift"]
+    outputs: ["/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amuleth.build/main.swift.o","/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amuleth.swiftmodule"]
+    executable: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    module-name: "amuleth"
+    module-output-path: "/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amuleth.swiftmodule"
+    import-paths: ["/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug"]
+    temps-path: "/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amuleth.build"
+    objects: ["/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amuleth.build/main.swift.o"]
+    other-args: ["-target","x86_64-apple-macosx10.10","-swift-version","5","-enable-batch-mode","-index-store-path","/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/index/store","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-Onone","-enable-testing","-g","-j8","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/ModuleCache","-parseable-output","-color-diagnostics"]
+    sources: ["/Users/kevinchau/amuleth/Sources/amuleth/main.swift"]
+    is-library: false
+    enable-whole-module-optimization: false
+    num-threads: 8
+
+  "C.amulethPackageTests-debug.test":
+    tool: shell
+    inputs: ["/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amulethTests.build/XCTestManifests.swift.o","/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amulethTests.build/amulethTests.swift.o"]
+    outputs: ["/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amulethPackageTests.xctest/Contents/MacOS/amulethPackageTests"]
+    description: "Linking ./.build/x86_64-apple-macosx/debug/amulethPackageTests.xctest/Contents/MacOS/amulethPackageTests"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug","-o","/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amulethPackageTests.xctest/Contents/MacOS/amulethPackageTests","-module-name","amulethPackageTests","-Xlinker","-bundle","-Xlinker","-rpath","-Xlinker","@loader_path/../../../","@/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amulethPackageTests.product/Objects.LinkFileList","-Xlinker","-rpath","-Xlinker","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx","-target","x86_64-apple-macosx10.15","-Xlinker","-add_ast_path","-Xlinker","/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amulethTests.swiftmodule","-L","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib"]
+
+  "C.amulethTests-debug.module":
+    tool: swift-compiler
+    inputs: ["/Users/kevinchau/amuleth/Tests/amulethTests/XCTestManifests.swift","/Users/kevinchau/amuleth/Tests/amulethTests/amulethTests.swift","/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amuleth"]
+    outputs: ["/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amulethTests.build/XCTestManifests.swift.o","/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amulethTests.build/amulethTests.swift.o","/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amulethTests.swiftmodule"]
+    executable: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    module-name: "amulethTests"
+    module-output-path: "/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amulethTests.swiftmodule"
+    import-paths: ["/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug"]
+    temps-path: "/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amulethTests.build"
+    objects: ["/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amulethTests.build/XCTestManifests.swift.o","/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/amulethTests.build/amulethTests.swift.o"]
+    other-args: ["-target","x86_64-apple-macosx10.15","-swift-version","5","-enable-batch-mode","-index-store-path","/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/index/store","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-Onone","-enable-testing","-g","-j8","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/kevinchau/amuleth/.build/x86_64-apple-macosx/debug/ModuleCache","-parseable-output","-color-diagnostics"]
+    sources: ["/Users/kevinchau/amuleth/Tests/amulethTests/XCTestManifests.swift","/Users/kevinchau/amuleth/Tests/amulethTests/amulethTests.swift"]
+    is-library: true
+    enable-whole-module-optimization: false
+    num-threads: 8
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/kevinchau/amuleth/Sources/amuleth/","/Users/kevinchau/amuleth/Tests/amulethTests/","/Users/kevinchau/amuleth/Package.swift","/Users/kevinchau/amuleth/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+

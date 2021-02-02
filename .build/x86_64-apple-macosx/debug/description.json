@@ -1,0 +1,19 @@
+{
+  "builtTestProducts" : [
+    {
+      "binaryPath" : "\/Users\/kevinchau\/amuleth\/.build\/x86_64-apple-macosx\/debug\/amulethPackageTests.xctest\/Contents\/MacOS\/amulethPackageTests",
+      "packageName" : "amuleth",
+      "productName" : "amulethPackageTests"
+    }
+  ],
+  "copyCommands" : {
+
+  },
+  "swiftTargetMap" : {
+    "C.amuleth-debug.module" : "amuleth",
+    "C.amulethTests-debug.module" : "amulethTests"
+  },
+  "testDiscoveryCommands" : {
+
+  }
+}
